@@ -6,4 +6,5 @@ scikit-learn
 streamlit
 requests
 pyarrow
-
+folium 
+streamlit-folium
