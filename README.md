@@ -12,7 +12,8 @@ This is an interactive tool used for analyzing and visualizing wildlife migratio
 - **Multi-species Support** - Supports birdd migration and bat activities 
 - **Temporal Analysis** - Time-based patterns of animal activity and movement
 - **Interactive Dashboard**
-
+## Demo Video
+[Demo Video](https://youtu.be/EojvVNg-Qgk)
 ## Current datasets
 
 The dashboard currently supports analysis of:
