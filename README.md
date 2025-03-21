@@ -1,58 +1,88 @@
-# Conservation Impact Dashboard
+# Migration analysis
 
 ## Overview
 
-The **Conservation Impact Dashboard** is an interactive web-based tool that analyzes and predicts species recovery trends based on historical data. This project helps conservationists, researchers, and policymakers assess the effectiveness of conservation efforts, habitat restoration, and environmental changes in improving biodiversity.
+This is an interactive tool used for analyzing and visualizing wildlife migration patterns and behavioral data. It can help conservation researchers and wildlife biologists look at animal tracking data more easily, helping to inform conservation strategies and habitat protection efforts.
 
 ## Features
 
-**Species Recovery Trends** – Visualize population changes of endangered species over time.
+- **Migration Route Visualization** - Interactive maps showing animal movement patterns over time
+- **Movement Analysis** - Calculation of daily distances, speed, and patterns of movement
+- **Environmental Factor Correlation** - Analysis of how habitat and environmental variables impact movement
+- **Multi-species Support** - Supports birdd migration and bat activities 
+- **Temporal Analysis** - Time-based patterns of animal activity and movement
+- **Interactive Dashboard**
 
-**Conservation Strategy Analysis** – Compare the effectiveness of different conservation efforts.
+## Current datasets
 
-**Environmental Factor Correlation** – Analyze how climate, habitat restoration, and human activities impact species.
+The dashboard currently supports analysis of:
+- Bird migration tracking data (timestamp, location, environmental factors)
+- Hammer-headed fruit bat acceleration data from Congo (movement patterns and activity)
 
-**Predictive Modeling** – Use machine learning to forecast species population trends.
+## Tech stack
 
-**Interactive Dashboard** – Built with Streamlit for easy user interaction.
-
-## Tech Stack
-
-- **Programming Language:** Python
-- **Libraries:** Pandas, NumPy, Matplotlib, Seaborn, Scikit-learn
+- **Programming Language:** Python 3.x
+- **Data Libraries:** Pandas, NumPy
+- **Visualization:** Matplotlib, Seaborn, Folium
 - **Web Framework:** Streamlit
-- **Version Control:** GitHub
+- **Data Fetching:** gdown (for retrieving datasets from Google Drive)
+- **Version Control:** Git
 
-## Datasets & APIs
+## Usage
 
-- **IUCN Red List** (Threatened species data): [https://www.iucnredlist.org/](https://www.iucnredlist.org/)
-- **GBIF (Global Biodiversity Information Facility)** (Species occurrence records): [https://www.gbif.org/](https://www.gbif.org/)
-- **World Bank Biodiversity Indicators** (Environmental data): [https://data.worldbank.org/topic/environment](https://data.worldbank.org/topic/environment)
-- **NASA EarthData** (Satellite-based environmental changes): [https://earthdata.nasa.gov/](https://earthdata.nasa.gov/)
-
-## Installation & Setup
-
-### Prerequisites
+### Requirements
 
 - Python 3.8+
 - pip
 - Git
+- gdown
 
-### Steps to Run Locally
+### Quickstart
 
 ```sh
-# Clone the repository
 git clone https://github.com/NNS-Development/conservation_dashboard.git
 cd conservation_dashboard
+```
 
-# Create a virtual environment
+run the app using the script
+```sh
+./run.sh
+```
+
+### Manual setup
+
+If you prefer to set up manually:
+
+Clone the repository
+```sh
+git clone https://github.com/NNS-Development/conservation_dashboard.git
+cd conservation_dashboard
+```
+
+Create a virtual environment
+```sh
 python -m venv venv
 source venv/bin/activate  # On Windows use: venv\Scripts\activate
+```
 
-# Install dependencies
+Install dependencies
+```sh
 pip install -r requirements.txt
+```
 
-# Run the Streamlit dashboard
+Create data directory
+```sh
+mkdir -p src/data
+```
+
+Download datasets (requires gdown)
+```sh
+gdown 1AZFTkhZfRt_pJiLuP14Yr7SpjDgnuyFj -O src/data/hammer_headed_fruit_bats_congo.csv
+gdown 1yCSSjXz4RMVkT8LxdLOjrxnlKw4QqAP_ -O src/data/migration_original.csv
+```
+
+Launch the app
+```sh
 streamlit run app.py
 ```
 
@@ -60,32 +90,48 @@ streamlit run app.py
 
 ```
 conservation_dashboard/
-│── data/                # Store local dataset (if needed)
-│── src/                 # Source files for processing and visualization
-│   ├── data_loader.py    # Handles data fetching & preprocessing
-│   ├── visualization.py  # Visualization functions
-│   ├── prediction.py     # Machine learning model
 │── app.py               # Main Streamlit application
+│── build.sh             # Setup and build script
 │── requirements.txt     # Dependencies
+│── LICENSE              # License information
 │── README.md            # Project documentation
-│── .gitignore           # Ignore unnecessary files
+│── src/                 # Source code
+│   ├── data/            # Dataset storage (created at build time)
+│   │   ├── migration_original.csv
+│   │   ├── hammer_headed_fruit_bats_congo.csv
+│   ├── utils.py         # Utility functions (e.g., distance calculations)
+│   ├── visualization.py # Visualization functions
+│── out/                 # Output directory
+│   ├── models/          # For any trained models
+│   ├── plots/           # For exported visualizations
+│── venv/                # Virtual environment (created at build time)
 ```
 
-## Deployment
+## Usage
 
-To deploy this project online, you can use **Streamlit Cloud** or **Hugging Face Spaces**:
+The dashboard has two main analysis modes:
 
-```sh
-streamlit share
-```
+1. **Bird Migration**
+   - Select bird ID from the sidebar
+   - View migration routes on interactive map
+   - Analyze daily movement distances
+   - Examine environmental factor correlations
+   - View movement patterns by time of day
 
-## Contributing
+2. **Bat Activity**
+   - Select bat ID from the sidebar
+   - Analyze acceleration data across three axes
+   - Examine movement intensity patterns
+   - View daily activity distributions
+   - Generate movement statistics
 
-1. Fork the repository.
-2. Create a new branch (`git checkout -b feature-branch`).
-3. Commit changes (`git commit -m "Added new feature"`).
-4. Push to the branch (`git push origin feature-branch`).
-5. Open a pull request.
+## Future Development
 
-##
+- Support for additional species and tracking data types
+- Advanced machine learning models for behavior prediction
+- Habitat range estimation tools
+- Environmental impact analysis
+- Conservation priority area recommendations
 
+## License
+Look at LISCENSE for details
