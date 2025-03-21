@@ -125,7 +125,7 @@ The dashboard has two main analysis modes:
    - View daily activity distributions
    - Generate movement statistics
 
-## Future Development
+## Roadmap
 
 - Support for additional species and tracking data types
 - Advanced machine learning models for behavior prediction
@@ -134,4 +134,4 @@ The dashboard has two main analysis modes:
 - Conservation priority area recommendations
 
 ## License
-Look at LISCENSE for details
+Look at LICENSE for details
