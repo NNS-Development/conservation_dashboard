@@ -13,7 +13,7 @@ st.title("Migration Analysis Dashboard")
 @st.cache_data
 def load_data():
     bird_data = pd.read_csv("src/data/migration_original.csv")
-    bat_data = pd.read_csv("src/data/Hammer-headed fruit bats (Hypsignathus monstrosus) in the Republic of Congo-acc.csv")  # Assuming this is the second dataset
+    bat_data = pd.read_csv("src/data/hammer_headed_fruit_bats_congo.csv")  # Assuming this is the second dataset
     
     # Process bird data
     bird_data['timestamp'] = pd.to_datetime(bird_data['timestamp'])
